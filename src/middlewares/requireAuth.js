@@ -5,6 +5,10 @@ const User = mongoose.model('User');
 module.exports = (req, res, next) => {
     const { authorization } = req.headers;
 
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader("Access-Control-Allow-Headers", "*");
+    
     if (!authorization) {
         return res.status(401).send({ error: 'No authorization'});
     }
