@@ -15,9 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authRoutes);
 app.use(trackRoutes);
 
-const user = process.env.USERNAME;
-const password = process.env.PASS;
-const mongoUri = `mongodb+srv://${user}:${password}@cluster0.bnsjt.mongodb.net/tracker?retryWrites=true&w=majority`;
+const mongoUri = 'mongodb+srv://adminNir:n12345@cluster0.bnsjt.mongodb.net/tracker?retryWrites=true&w=majority';
 
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
@@ -38,5 +36,5 @@ app.get('/', requireAuth, (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log('listening on port 3000');
+    console.log(`listening on port ${PORT}`);
 });
