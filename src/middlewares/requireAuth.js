@@ -3,11 +3,22 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 module.exports = (req, res, next) => {
-    const { authorization } = req.headers;
+      // Website you wish to allow to connect
+      res.setHeader('Access-Control-Allow-Origin', '*');
 
-    // if (!authorization) {
-    //     return res.status(401).send({ error: 'You must be LOGGED IN1'});
-    // }
+      // Request methods you wish to allow
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  
+      // Request headers you wish to allow
+      res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    
+      const { authorization } = req.headers;
+
+    console.log(authorization);
+
+    if (!authorization) {
+        return res.status(401).send({ error: 'You must be LOGGED IN1'});
+    }
 
     const token = authorization.replace('Bearer ', '');
 
