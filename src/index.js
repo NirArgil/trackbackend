@@ -18,7 +18,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.get('/', (req, res) => {
+app.get('/', requireAuth, (req, res) => {
     res.send(`Server is GOOD`);
 });
 
