@@ -9,13 +9,8 @@ const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
-
-const options = {
-    origin: "*",
-    optionsSuccessStatus: 200
-}
  
-app.use(cors(options));
+app.use(cors());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -23,11 +18,9 @@ app.use(function(req, res, next) {
     next();
   });
 
-app.get('/', requireAuth, (req, res) => {
+app.get('/', (req, res) => {
     res.send(`Server is GOOD`);
 });
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
