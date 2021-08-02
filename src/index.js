@@ -10,8 +10,6 @@ const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
 
-res.setHeader('Access-Control-Allow-Origin', '*');
-
 app.use(cors());
 
 app.use(express.json());
