@@ -15,6 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(authRoutes);
 app.use(trackRoutes);
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", req.header('origin'));
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Credentials","true");
+    next();
+  }); 
+
 const mongoUri = 'mongodb+srv://adminNir:n12345@cluster0.bnsjt.mongodb.net/tracker?retryWrites=true&w=majority';
 
 mongoose.connect(mongoUri, {
@@ -30,11 +37,9 @@ mongoose.connection.on('error', (err) => {
     console.error('Error connect to mongo', err);
 });
 
-app.get('/', (req, res) => {
+app.get('/', requireAuth, (req, res) => {
     res.send(`Your email: ${req.user.email}`);
 });
-
-// requireAuth,
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
