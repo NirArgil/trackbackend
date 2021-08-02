@@ -12,9 +12,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(authRoutes);
-app.use(trackRoutes);
-
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
@@ -33,6 +30,9 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 }); 
+
+app.use(authRoutes);
+app.use(trackRoutes);
 
 const mongoUri = 'mongodb+srv://adminNir:n12345@cluster0.bnsjt.mongodb.net/tracker?retryWrites=true&w=majority';
 
