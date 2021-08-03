@@ -4,7 +4,7 @@ const User = mongoose.model('User');
 
 module.exports = (req, res, next) => {
     // const { authorization } = req.headers;
-    const authorization = req.get("Authorization");
+    const authorization = req.headers["authorization"];
     if (!authorization) {
         return res.status(401).send({ error: 'No authorization'});
     }
