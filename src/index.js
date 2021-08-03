@@ -10,9 +10,11 @@ const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
  
-app.use(cors());
-
-app.options('*', cors());
+const corsOptions = {
+    origin: '*',
+    credentials: true };
+    
+app.use(cors(corsOptions));
 
 app.use((req, res, next) => {  
     res.setHeader('Access-Control-Allow-Origin', '*');
