@@ -10,7 +10,7 @@ const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
  
-// app.use(cors());
+app.use(cors());
 
 app.options('*', cors());
 
