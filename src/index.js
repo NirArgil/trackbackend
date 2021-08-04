@@ -18,6 +18,8 @@ const corsOptions = {
     
 app.use(cors(corsOptions));
 
+app.options('*', cors());
+
 req.header('authorization');
 
 app.use((req, res, next) => {  
