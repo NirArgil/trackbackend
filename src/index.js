@@ -34,9 +34,9 @@ app.use((req, res, next) => {
     next();
   });
 
-app.get('/', requireAuth, (req, res) => {
-    res.send(`Server is GOOD`);
-});
+// app.get('/', requireAuth, (req, res) => {
+//     res.send(`Server is GOOD`);
+// });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
