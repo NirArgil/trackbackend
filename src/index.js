@@ -34,10 +34,10 @@ const app = express();
 //     next();
 //   });
 
-app.get('/',  (req, res) => {
+app.get('/', requireAuth, (req, res) => {
     res.send(`Server is GOOD`);
 });
-// requireAuth,
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
