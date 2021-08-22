@@ -34,9 +34,10 @@ app.use((req, res, next) => {
     next();
   });
 
-app.get('/', requireAuth, (req, res) => {
+app.get('/',  (req, res) => {
     res.send(`Server is GOOD`);
 });
+// requireAuth,
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -61,6 +62,7 @@ mongoose.connection.on('error', (err) => {
 
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`);
 });
