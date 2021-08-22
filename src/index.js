@@ -10,29 +10,29 @@ const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
  
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    allowedHeaders:['content-type', 'authorization']
-};
+// const corsOptions = {
+//     origin: '*',
+//     credentials: true,
+//     allowedHeaders:['content-type', 'authorization']
+// };
     
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
-app.options('*', cors());
+// app.options('*', cors());
 
-req.header('authorization');
+// req.header('authorization');
 
-app.use((req, res, next) => {  
-    res.setHeader('Access-Control-Allow-Origin', '*');
+// app.use((req, res, next) => {  
+//     res.setHeader('Access-Control-Allow-Origin', '*');
   
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   
-    res.setHeader('Access-Control-Allow-Headers', 'content-type,accept, x-access-token, authorization');
+//     res.setHeader('Access-Control-Allow-Headers', 'content-type,accept, x-access-token, authorization');
   
-    res.setHeader('Access-Control-Allow-Credentials', true);
+//     res.setHeader('Access-Control-Allow-Credentials', true);
   
-    next();
-  });
+//     next();
+//   });
 
 app.get('/',  (req, res) => {
     res.send(`Server is GOOD`);
